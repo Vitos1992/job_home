@@ -47,7 +47,25 @@ let busStation = {
 };
 busStation.reservation();
 
-// 3. Автомобіль.
+// 3. Автозаправка.
+let gasStation = {
+  name: ["Укрнафта", "OKKO", "WOG"],
+  fuelTypes: ["А-95", "ДП", "А-92"],
+  price: [58, 52, 52],
+  refuel(fuelType) {
+    let index = this.fuelTypes.indexOf(fuelType);
+    if (index !== -1) {
+      console.log(
+        `Вартість за літр пального ${fuelType} на заправці ${this.name[0]} становить ${this.price[index]} гривень за літир.`
+      );
+    } else {
+      console.log(`Вибачте, такого типу пального немає на заправці.`);
+    }
+  },
+};
+gasStation.refuel("ДП");
+
+// 4. Автомобіль.
 
 let car = {
   brand: "BMW",
@@ -62,4 +80,102 @@ let car = {
   },
 };
 car.drive("120 km/h");
-// 4. Поліція.
+
+// 5. Поліція.
+
+let policeStation = {
+  name: "post police",
+  patrolCars: 2,
+  speed: "50 km/h",
+  "max speed": "70 km/h",
+  fine(fineAmount) {
+    let speedValue = parseInt(this.speed);
+
+    if (speedValue >= parseInt(this["max speed"])) {
+      console.log(`Штраф за перевищення швидкості: ${fineAmount} гривень.`);
+    } else {
+      console.log(`Штраф не виписано, тому що Ви розумніший за поліцейського!`);
+    }
+  },
+};
+policeStation.fine(340);
+
+// 6. Автосервіс.
+
+let carService = {
+  name: "Dolinskiy mechanic",
+  service: ["oil change", "diagnostics", "brake inspection"],
+  price: [550, 450, 350],
+  "tow truck": {
+    available: true,
+    price: 250,
+  },
+  hours: {
+    open: "09:00",
+    close: "20:00",
+  },
+  serviceInfo(typeHours) {
+    let iPrice = () => {
+      for (let i = 0; i < this.price.length; i++) {
+        console.log(
+          `Вартість послуги ${this.service[i]}: ${this.price[i]} гривень.`
+        );
+      }
+    };
+    if (typeHours === this.hours.open || typeHours === this.hours.close) {
+      console.log(
+        `${this.name} обслуговує ваші автмоблі з ${this.hours.open} по ${this.hours.close}`
+      );
+    } else if (
+      typeHours !== this.hours.open ||
+      typeHours !== this.hours.close
+    ) {
+      console.log(
+        `${
+          this.name
+        } зараз зачинено, але за необхідність поза робочий час ${iPrice()} подвійний тариф.`
+      );
+    } else {
+      console.log(
+        `У критичних випадках налаємо послуги евакуатора за ${this["tow truck"].price} гривень.`
+      );
+    }
+  },
+};
+carService.serviceInfo("08:00");
+
+// 7. Світлофор.
+
+let trafficLight = {
+  colors: ["red", "yelloy", "green"],
+  signal(color) {
+    if (color === this.colors[0]) {
+      console.log(`Колір ${this.colors[0]} зупинись!!!`);
+    } else if (color === this.colors[1]) {
+      console.log(`Колір ${this.colors[1]} готуйся!!`);
+    } else if (color === this.colors[2]) {
+      console.log(`Колір ${this.colors[2]} СТАРТУЙ`);
+    } else {
+      console.log(`Роби що хочешь`);
+    }
+  },
+};
+trafficLight.signal();
+
+// 8. Дурень на дорозі
+
+let foolOnTheRoad = {
+  name: "Дурень",
+  action: "перебігає",
+  location: "по пішоходному переході",
+  foolRun() {
+    let runAction = "будь де";
+    if (this.action == runAction) {
+      console.log(`не заважай дурню`);
+    } else if (this.location == runAction) {
+      console.log(`пропусти дурня`);
+    }
+  },
+};
+
+foolOnTheRoad.foolRun();
