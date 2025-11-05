@@ -100,7 +100,7 @@ let policeStation = {
 };
 policeStation.fine(340);
 
-// 6. Автосервіс.
+// 6. Автосервіс. ПИТАННЯ!!!
 
 let carService = {
   name: "Dolinskiy mechanic",
@@ -179,3 +179,30 @@ let foolOnTheRoad = {
 };
 
 foolOnTheRoad.foolRun();
+
+// 9. Велосипедист.
+
+let cyclist = {
+  name: "Vasya",
+  activity: "катається",
+  speed: "20 km/h",
+  location: "по пішоходному переході",
+  ride() {
+    if (this.location === "по пішоходному переході") {
+      console.log(
+        `То вирогідність того що ${this.name} зі швидкістю ${this.speed} може збити пішохода велика.`
+      );
+    } else {
+      console.log(`${this.name} рухається безпечно.`);
+    }
+  },
+};
+
+cyclist.ride();
+
+// 10. Маршрутка.
+
+let minibus = {
+  routeNumber: 12,
+  route: [],
+};
