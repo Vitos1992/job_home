@@ -1,4 +1,46 @@
-// 1. По дорозі зустрілася пошта.
+class Services {
+  country = "Ukraine";
+  city = "Odessa";
+
+  constructor(name, address) {
+    this.name = name;
+    this.address = address;
+  }
+
+  NameAddress() {
+    console.log(
+      `${this.name} знаходиться в  ${this.country} за адресою м. ${this.city}, вул. ${this.address}`
+    );
+    // console.log(this.address);
+  }
+
+  // workingHours() {
+  //   console.log(`${this.name} працює з 08:00 по 18:00 щодня.`);
+  // }
+}
+
+const postOfficeService = new Services("Post office", " Deribasovskaya 12"); // 1.  Пошта.
+
+class PostOffice extends Services {
+  constructor() {}
+}
+
+const busStationServices = new Services("Privoz", " Kanatnaya 45"); // 2. Автостанція.
+const gasStationServices = new Services("OKKO", " Shevchenko 100"); // 3. Автозаправка.
+const policeStationServices = new Services("Post police", ""); // 5. Поліція.
+const carServiceServices = new Services("Dolinskiy mechanic", "Odesska 51"); // 6. Автосервіс.
+
+postOfficeService.NameAddress();
+busStationServices.NameAddress();
+gasStationServices.NameAddress();
+policeStationServices.NameAddress();
+carServiceServices.NameAddress();
+
+console.log(postOfficeService);
+// console.log(busStationServices);
+// console.log(gasStationServices);
+
+// 1.  Пошта.
 
 let postOffice = {
   name: "Post office",
